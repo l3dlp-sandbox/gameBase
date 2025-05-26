@@ -50,16 +50,16 @@ class Fx extends GameChildProcess {
 	}
 
 	/** Create a HParticle instance in the BG layer, using ADDITIVE blendmode **/
-	public inline function allocBg_add(id,x,y) return pool.alloc(bg_add, Assets.tiles.getTileRandom(id), x, y);
+	public inline function allocBg_add(id,x,y) return pool.alloc(bg_add, Assets.tiles.getRandomTile(id), x, y);
 
 	/** Create a HParticle instance in the BG layer, using NORMAL blendmode **/
-	public inline function allocBg_normal(id,x,y) return pool.alloc(bg_normal, Assets.tiles.getTileRandom(id), x, y);
+	public inline function allocBg_normal(id,x,y) return pool.alloc(bg_normal, Assets.tiles.getRandomTile(id), x, y);
 
 	/** Create a HParticle instance in the MAIN layer, using ADDITIVE blendmode **/
-	public inline function allocMain_add(id,x,y) return pool.alloc( main_add, Assets.tiles.getTileRandom(id), x, y );
+	public inline function allocMain_add(id,x,y) return pool.alloc( main_add, Assets.tiles.getRandomTile(id), x, y );
 
 	/** Create a HParticle instance in the MAIN layer, using NORMAL blendmode **/
-	public inline function allocMain_normal(id,x,y) return pool.alloc(main_normal, Assets.tiles.getTileRandom(id), x, y);
+	public inline function allocMain_normal(id,x,y) return pool.alloc(main_normal, Assets.tiles.getRandomTile(id), x, y);
 
 
 	public inline function markerEntity(e:Entity, c:Col=Pink, sec=3.0) {
@@ -67,7 +67,7 @@ class Fx extends GameChildProcess {
 		if( e!=null && e.isAlive() ) {
 			var p = allocMain_add(D.tiles.fxCircle15, e.attachX, e.attachY);
 			p.setCenterRatio(e.pivotX, e.pivotY);
-			p.scaleTo(e.wid, e.hei);
+			p.resizeTo(e.wid, e.hei);
 			p.setFadeS(1, 0, 0.06);
 			p.colorize(c);
 			p.lifeS = sec;
