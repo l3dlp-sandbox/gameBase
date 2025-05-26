@@ -126,8 +126,8 @@ class Bar extends h2d.Object {
 			oldBar.width = 0;
 	}
 
-	public function blink(?c:Col, a=1.0) {
-		blinkColor.setColor( (c==null ? color : c).withAlpha(a) );
+	public function blink(c:Col=0, a=1.0) {
+		blinkColor.setColor( (c==0 ? color : c).withAlpha(a) );
 		cd.setS("blinkMaintain", 0.15 * 1/oldBarSpeed);
 	}
 

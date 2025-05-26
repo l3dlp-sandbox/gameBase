@@ -331,9 +331,9 @@ class Entity {
 
 
 	/** Quickly set X/Y pivots. If Y is omitted, it will be equal to X. **/
-	public function setPivots(x:Float, ?y:Float) {
+	public function setPivots(x:Float, y=-99.) {
 		pivotX = x;
-		pivotY = y!=null ? y : x;
+		pivotY = y>=-98 ? y : x;
 	}
 
 	/** Return TRUE if the Entity *center point* is in screen bounds (default padding is +32px) **/
@@ -388,19 +388,19 @@ class Entity {
 	public function as<T:Entity>(c:Class<T>) : T return Std.downcast(this, c);
 
 	/** Return a random Float value in range [min,max]. If `sign` is TRUE, returned value might be multiplied by -1 randomly. **/
-	public inline function rnd(min,max,?sign) return Lib.rnd(min,max,sign);
+	public inline function rnd(min,max,sign=false) return Lib.rnd(min,max,sign);
 	/** Return a random Integer value in range [min,max]. If `sign` is TRUE, returned value might be multiplied by -1 randomly. **/
-	public inline function irnd(min,max,?sign) return Lib.irnd(min,max,sign);
+	public inline function irnd(min,max,sign=false) return Lib.irnd(min,max,sign);
 
 	/** Truncate a float value using given `precision` **/
-	public inline function pretty(value:Float,?precision=1) return M.pretty(value,precision);
+	public inline function pretty(value:Float,precision=1) return M.pretty(value,precision);
 
 	public inline function dirTo(e:Entity) return e.centerX<centerX ? -1 : 1;
 	public inline function dirToAng() return dir==1 ? 0. : M.PI;
 	public inline function getMoveAng() return Math.atan2(dyTotal,dxTotal);
 
 	/** Return a distance (in grid cells) from this to something **/
-	public inline function distCase(?e:Entity, ?tcx:Int, ?tcy:Int, txr=0.5, tyr=0.5) {
+	public inline function distCase(?e:Entity, tcx=0, tcy=0, txr=0.5, tyr=0.5) {
 		if( e!=null )
 			return M.dist(cx+xr, cy+yr, e.cx+e.xr, e.cy+e.yr);
 		else
@@ -408,7 +408,7 @@ class Entity {
 	}
 
 	/** Return a distance (in pixels) from this to something **/
-	public inline function distPx(?e:Entity, ?x:Float, ?y:Float) {
+	public inline function distPx(?e:Entity, x=0., y=0.) {
 		if( e!=null )
 			return M.dist(attachX, attachY, e.attachX, e.attachY);
 		else
@@ -420,7 +420,7 @@ class Entity {
 	}
 
 	/** Check if the grid-based line between this and given target isn't blocked by some obstacle **/
-	public inline function sightCheck(?e:Entity, ?tcx:Int, ?tcy:Int) {
+	public inline function sightCheck(?e:Entity, tcx=0, tcy=0) {
 		if( e!=null)
 			return e==this ? true : dn.geom.Bresenham.checkThinLine(cx, cy, e.cx, e.cy, canSeeThrough);
 		else

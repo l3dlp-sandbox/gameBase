@@ -94,7 +94,7 @@ class LPoint {
 	}
 
 	/** Init using level grid coords **/
-	public inline function setLevelCase(x,y,?xr=0.5,?yr=0.5) {
+	public inline function setLevelCase(x, y, xr=0.5, yr=0.5) {
 		this.cx = x;
 		this.cy = y;
 		this.xr = xr;
