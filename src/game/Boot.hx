@@ -4,6 +4,8 @@
 **/
 
 class Boot extends hxd.App {
+	public static var ME : Boot;
+
 	#if debug
 	// Debug controls over game speed
 	var tmodSpeedMul = 1.0;
@@ -18,7 +20,7 @@ class Boot extends hxd.App {
 		App entry point: everything starts here
 	**/
 	static function main() {
-		new Boot();
+		ME = new Boot();
 	}
 
 	/**

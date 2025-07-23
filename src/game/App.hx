@@ -17,6 +17,10 @@ class App extends dn.Process {
 	/** If TRUE, game is paused, and a Contrast filter is applied **/
 	public var screenshotMode(default,null) = false;
 
+	public var globalMouseX(get,never) : Int; inline function get_globalMouseX() return Std.int( Boot.ME.s2d.mouseX );
+	public var globalMouseY(get,never) : Int; inline function get_globalMouseY() return Std.int( Boot.ME.s2d.mouseY );
+
+
 	public function new(s:h2d.Scene) {
 		super();
 		ME = this;
