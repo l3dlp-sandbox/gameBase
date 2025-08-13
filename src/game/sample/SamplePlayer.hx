@@ -69,8 +69,8 @@ class SamplePlayer extends Entity {
 		// Land on ground
 		if( yr>1 && level.hasCollision(cx,cy+1) ) {
 			setSquashY(0.5);
-			vBase.dy = 0;
-			vBump.dy = 0;
+			vBase.clearY();
+			vBump.clearY();
 			yr = 1;
 			ca.rumble(0.2, 0.06);
 			onPosManuallyChangedY();
@@ -96,7 +96,7 @@ class SamplePlayer extends Entity {
 
 		// Jump
 		if( cd.has("recentlyOnGround") && ca.isPressed(Jump) ) {
-			vBase.dy = -0.85;
+			vBase.addY(-0.85);
 			setSquashX(0.6);
 			cd.unset("recentlyOnGround");
 			fx.dotsExplosionExample(centerX, centerY, 0xffcc00);
@@ -116,10 +116,10 @@ class SamplePlayer extends Entity {
 
 		// Gravity
 		if( !onGround )
-			vBase.dy+=0.05;
+			vBase.addY(0.05);
 
 		// Apply requested walk movement
 		if( walkSpeed!=0 )
-			vBase.dx += walkSpeed * 0.045; // some arbitrary speed
+			vBase.addX( walkSpeed*0.045 ); // some arbitrary speed
 	}
 }
