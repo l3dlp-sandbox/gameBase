@@ -7,4 +7,6 @@
 -lib ldtk-haxe-api
 -lib heaps-aseprite
 
+-D useProcessTweenie
+
 -main Boot
