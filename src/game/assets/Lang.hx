@@ -1,6 +1,7 @@
 package assets;
 
 import dn.data.GetText;
+import dn.data.LocaleString;
 
 class Lang {
     static var _initDone = false;
