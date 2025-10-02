@@ -55,8 +55,8 @@ class DebugDrone extends Entity {
 		help.text = [
 			"CANCEL -- Escape",
 			"MOVE -- ARROWS/pad",
-			"ZOOM IN -- "+ca.input.getAllBindindTextsFor(DebugDroneZoomIn).join(", "),
-			"ZOOM OUT -- "+ca.input.getAllBindindTextsFor(DebugDroneZoomOut).join(", "),
+			"ZOOM IN -- "+ca.controller.getAllBindindTextsFor(DebugDroneZoomIn).join(", "),
+			"ZOOM OUT -- "+ca.controller.getAllBindindTextsFor(DebugDroneZoomOut).join(", "),
 		].join("\n");
 		help.setScale(Const.UI_SCALE);
 		help.x = 4*Const.UI_SCALE;
